@@ -2,7 +2,11 @@
 
 This service detects the transparency rate of an image from a given url of this image. 
 The service exposes one HTTP endpoint that allows you to request via the url of an image. 
-This HTTP endpoint returns transparency rate of this image.
+This HTTP endpoint returns transparency rate of this image. This service uses serverless.
+
+The logic behind this service is providing the ratio of # of transparent pixels over # of all pixels as transparency rate.
+
+__Remark__ This service is inspired by the following stackoverflow question: [Identify whether a Png image has 100 percent transparent Background](http://stackoverflow.com/questions/23734939/identify-whether-a-png-image-has-100-percent-transparent-background)
 
 ### Usage
 * `GET {API_GATEWAY_URL}?url={URL}`
