@@ -1,0 +1,24 @@
+service: transparency-detection
+
+provider:
+  name: aws
+  runtime: java8
+  stage: production
+  region: us-east-1
+
+
+package:
+  artifact: target/transparency-detection-1.0.jar
+
+functions:
+  detect:
+    handler: com.mojilala.transparency_detection.serverless.Handler
+    events:
+      - http:
+          path: detect
+          method: get
+          integration: lambda
+          response:
+            headers:
+              Content-Type: "'text/plain'"
+            template: "$input.path('$')"
