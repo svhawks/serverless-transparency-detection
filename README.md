@@ -54,3 +54,6 @@ functions:
 ```
 * If url query parameter is blank:
 {"message":"url query parameter cannot be blank!"}
+
+# Developed by
+* [Selim Fırat Yılmaz](https://github.com/mrsfy)
