@@ -18,7 +18,3 @@ functions:
           path: detect
           method: get
           integration: lambda
-          response:
-            headers:
-              Content-Type: "'text/plain'"
-            template: "$input.path('$')"
