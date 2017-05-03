@@ -15,7 +15,6 @@ public class TransparencyAnalyzer {
 
     public double transparencyRate(BufferedImage img) {
         int transparentPixels = 0;
-        System.out.println("fssss");
 
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
@@ -26,7 +25,7 @@ public class TransparencyAnalyzer {
             }
         }
 
-        return ((double) transparentPixels) / (img.getWidth()*img.getHeight());
+        return ((double) transparentPixels) / (img.getHeight()*img.getWidth());
     }
 
     public boolean isTransparent( BufferedImage img ) {
@@ -43,16 +42,13 @@ public class TransparencyAnalyzer {
         return false;
     }
 
-    public String analyze(String url) throws IOException {
+    public DetectionResult analyze(String url) throws IOException {
 
-        ObjectMapper objectMapper = new ObjectMapper();
         System.setProperty("http.agent", "Chrome");
         BufferedImage img = ImageIO.read(new URL(url).openStream());
+        boolean isTransparent = isTransparent(img);
 
-        isTransparent(img);
-        double transparencyRate = transparencyRate(img);
-
-        return objectMapper.writeValueAsString(new DetectionResult(transparencyRate));
+        return new DetectionResult(isTransparent);
     }
 
 }
